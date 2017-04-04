@@ -8,7 +8,7 @@ import (
 type LevelState uint16
 
 func ParseStateFromCookie(c *http.Cookie) (LevelState, error) {
-  if c == nil {
+	if c == nil {
 		return LevelState(0), nil
 	}
 	value, err := strconv.ParseUint(c.Value, 10, 8)

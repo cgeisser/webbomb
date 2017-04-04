@@ -1,13 +1,20 @@
 package main
 
+import (
+	"errors"
+	"fmt"
+	"html/template"
+	"net/http"
+)
+
 type CookieLevel bool
 
 func (cl *CookieLevel) ValidRequest(r *http.Request, ls *LevelState) error {
-  if r.URL.Path == "/" ||
-	  	r.URL.Path == "/eat_cookie" {
-	 	return nil
- }
- return errors.New("you shouldn't be here")
+	if r.URL.Path == "/" ||
+		r.URL.Path == "/eat_cookie" {
+		return nil
+	}
+	return errors.New("you shouldn't be here")
 }
 
 func (cl *CookieLevel) IsComplete(r *http.Request, ls *LevelState) (bool, error) {
